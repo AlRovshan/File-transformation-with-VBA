@@ -101,13 +101,13 @@ Set destinationCell = ActiveCell.Offset(1, 0)
                             destinationCell.Value = destinationCell.Value & j & additionalSymbol & cell.Value & _
                             String(2, additionalSymbol) & group & additionalSymbol & 3 & String(3, additionalSymbol)
                         Else
-                            'Преобразования ячеек с домашним номером
+                            'Преобразования ячеек с sms
                             destinationCell.Value = destinationCell.Value & 0 & additionalSymbol & cell.Value & _
                             String(2, additionalSymbol) & group & String(4, additionalSymbol)
                             If cell.Column = 8 Then
                                 destinationCell.Value = Replace(destinationCell.Value, "phone", "sms")
                             Else
-                                'Преобразования ячеек с домашним номером
+                                'Преобразования ячеек с email
                                 If cell.Column = 9 Then
                                 destinationCell.Value = Replace(destinationCell.Value, "phone", "email")
                                 End If
@@ -120,7 +120,7 @@ Set destinationCell = ActiveCell.Offset(1, 0)
             End If
     Next cell
 'Добавление названий столбцов в первую строку
-Range("A1").Value = "Record number;Full name;Priority;Contact oreder;Contact value;Confirmation PIN;Groups;Contact subtype;Opt info;Ext id;Is owned by group"
+Range("A1").Value = "Record number;Full name;Priority;Contact type;Contact oreder;Contact value;Confirmation PIN;Groups;Contact subtype;Opt info;Ext id;Is owned by group"
 'Сохранение данных в новом файле в формате csv utf-8
 Application.DisplayAlerts = False
 savePath = ActiveWorkbook.Path & "\" & ActiveSheet.Name & ".csv"
